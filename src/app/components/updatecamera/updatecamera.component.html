@@ -1,0 +1,53 @@
+<div class="main-div">
+
+
+    <mat-card>
+        <mat-card-header>
+            <h1>update camera </h1>
+        </mat-card-header>
+        <mat-card-content>
+            
+            <form class="example-form">
+                <mat-form-field class="example-full-width">
+                  <mat-label>name</mat-label>
+                  <input type="name" matInput [formControl]="name" placeholder="Ex. pat@example.com">
+                  @if (name.hasError('name') && !name.hasError('required')) {
+                    <mat-error>Please enter a valid name address</mat-error>
+                  }
+                  @if (name.hasError('required')) {
+                    <mat-error>name is <strong>required</strong></mat-error>
+                  }
+                </mat-form-field>
+    
+    
+                <mat-form-field class="example-full-width">
+                    <mat-label>room</mat-label>
+                    <input type="room" matInput [formControl]="room" placeholder="Ex. pat@example.com">
+                    @if (room.hasError('room') && !room.hasError('required')) {
+                      <mat-error>Please enter a valid room address</mat-error>
+                    }
+                    @if (room.hasError('required')) {
+                      <mat-error>room is <strong>required</strong></mat-error>
+                    }
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <mat-label>link</mat-label>
+                    <input type="link" matInput [formControl]="link" placeholder="Ex. pat@example.com">
+                    @if (link.hasError('link') && !link.hasError('required')) {
+                      <mat-error>Please enter a valid link address</mat-error>
+                    }
+                    @if (link.hasError('required')) {
+                      <mat-error>link is <strong>required</strong></mat-error>
+                    }
+                  </mat-form-field>
+                  <mat-card-actions align="end">
+                    <button mat-raised-button>Save</button>
+                    <span class="spacer"></span>
+                  <button mat-raised-button color="warn">cancel</button>
+                    </mat-card-actions>
+              </form>
+    
+        </mat-card-content>
+      </mat-card>
+    
+      </div>

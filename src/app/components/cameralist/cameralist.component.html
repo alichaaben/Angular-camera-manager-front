@@ -1,0 +1,62 @@
+<div class="main-div">
+
+
+
+<mat-card>
+
+    <mat-card-content>
+<table  fxLayout="center center" mat-table [dataSource]="dataSource"
+style="width: 80vh"
+class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+     <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+     <ng-container matColumnDef="room">
+      <th mat-header-cell *matHeaderCellDef> room </th>
+      <td mat-cell *matCellDef="let element"> {{element.room}} </td>
+    </ng-container>
+  
+     <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> actions </th>
+      <td mat-cell *matCellDef="let element"> 
+          <div class="actions">
+             <div class="button-container">
+              <button mat-fab color="primary" aria-label="update Camera"
+                [routerLink]="['/home/update/' , element.id]"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+            </div>
+
+            <div class="button-container">
+              <button mat-fab color="accent" aria-label="watch live"
+              [routerLink]="['/home/live/' , element.id]"
+
+              >
+                <mat-icon>live_tv</mat-icon>
+              </button>
+            </div>
+            <div class="button-container">
+              <button mat-fab color="warn" aria-label=" delete Camera"
+                (click)="delete(element.id)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+             </div>
+         </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-card-content>
+</mat-card>
+</div>
