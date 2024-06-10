@@ -7,18 +7,18 @@ import { Component } from '@angular/core';
 })
 export class CameralistComponent {
 
-  displayedColumns: string[] = ['id', 'name', 'room', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'room', 'status' , 'actions'];
   dataSource = [
-    {id: 1, name: 'Hydrogen', room:"room", link: 'H'},
-    {id: 2, name: 'Helium', room:"room", link: 'He'},
-    {id: 3, name: 'Lithium', room:"room", link: 'Li'},
-    {id: 4, name: 'Beryllium', room:"room", link: 'Be'},
-    {id: 5, name: 'Boron', room:"room", link: 'B'},
-    {id: 6, name: 'Carbon', room:"room", link: 'C'},
-    {id: 7, name: 'Nitrogen', room:"room", link: 'N'},
-    {id: 8, name: 'Oxygen', room:"room", link: 'O'},
-    {id: 9, name: 'Fluorine', room:"room", link: 'F'},
-    {id: 10, name: 'Neon', room:"room", link: 'Ne'},
+    {id: 1, name: 'Hydrogen', room:"room", status : 'active', link: 'H'},
+    {id: 2, name: 'Helium', room:"room", status : 'active', link: 'He'},
+    {id: 3, name: 'Lithium', room:"room", status : 'active', link: 'Li'},
+    {id: 4, name: 'Beryllium', room:"room", status : 'active', link: 'Be'},
+    {id: 5, name: 'Boron', room:"room", status : 'active', link: 'B'},
+    {id: 6, name: 'Carbon', room:"room", status : 'active', link: 'C'},
+    {id: 7, name: 'Nitrogen', room:"room", status : 'active', link: 'N'},
+    {id: 8, name: 'Oxygen', room:"room", status : 'active', link: 'O'},
+    {id: 9, name: 'Fluorine', room:"room", status : 'active', link: 'F'},
+    {id: 10, name: 'Neon', room:"room", status : 'active', link: 'Ne'},
   ];
 
 

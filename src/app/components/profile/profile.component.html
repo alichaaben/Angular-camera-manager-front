@@ -1,0 +1,67 @@
+<div class="main-div">
+
+
+    <mat-card>
+        <mat-card-header>
+            <h1>Profile </h1>
+        </mat-card-header>
+        <mat-card-content>
+            
+            <form class="example-form">
+                <mat-form-field class="example-full-width">
+                  <mat-label>nom</mat-label>
+                  <input type="nom" matInput [formControl]="nom" placeholder="Ex. pat@example.com">
+                  @if (nom.hasError('nom') && !nom.hasError('required')) {
+                    <mat-error>Please enter a valid nom address</mat-error>
+                  }
+                  @if (nom.hasError('required')) {
+                    <mat-error>nom is <strong>required</strong></mat-error>
+                  }
+                </mat-form-field>
+    
+    
+                <mat-form-field class="example-full-width">
+                    <mat-label>prenom</mat-label>
+                    <input type="prenom" matInput [formControl]="prenom" placeholder="Ex. pat@example.com">
+                    @if (prenom.hasError('prenom') && !prenom.hasError('required')) {
+                      <mat-error>Please enter a valid prenom address</mat-error>
+                    }
+                    @if (prenom.hasError('required')) {
+                      <mat-error>prenom is <strong>required</strong></mat-error>
+                    }
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <mat-label>email</mat-label>
+                    <input type="email" matInput [formControl]="email" placeholder="Ex. pat@example.com">
+                    @if (email.hasError('email') && !email.hasError('required')) {
+                      <mat-error>Please enter a valid email address</mat-error>
+                    }
+                    @if (email.hasError('required')) {
+                      <mat-error>email is <strong>required</strong></mat-error>
+                    }
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                    <mat-label>password</mat-label>
+                    <input type="password" matInput [formControl]="password" placeholder="Ex. pat@example.com">
+                    @if (password.hasError('password') && !password.hasError('required')) {
+                      <mat-error>Please enter a valid password address</mat-error>
+                    }
+                    @if (password.hasError('required')) {
+                      <mat-error>password is <strong>required</strong></mat-error>
+                    }
+                  </mat-form-field>
+                  
+                  
+                  <mat-card-actions align="end">
+                    <button mat-raised-button
+                    (click)="onSubmit()"
+                    >Save</button>
+                    <span class="spacer"></span>
+                  <button mat-raised-button color="warn">cancel</button>
+                    </mat-card-actions>
+              </form>
+    
+        </mat-card-content>
+      </mat-card>
+    
+      </div>

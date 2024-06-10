@@ -20,7 +20,11 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatDialogModule } from '@angular/material/dialog'
+import { MatDialogModule } from '@angular/material/dialog';
+import { UserlistComponent } from './components/userlist/userlist.component';
+import { UseraddComponent } from './components/useradd/useradd.component';
+import { UserupdateComponent } from './components/userupdate/userupdate.component';
+import { ProfileComponent } from './components/profile/profile.component'
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { MatDialogModule } from '@angular/material/dialog'
     AddcameraComponent,
     CameralistComponent,
     UpdatecameraComponent,
-    CameraliveComponent
+    CameraliveComponent,
+    UserlistComponent,
+    UseraddComponent,
+    UserupdateComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

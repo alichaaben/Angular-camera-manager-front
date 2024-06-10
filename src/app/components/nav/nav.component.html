@@ -2,6 +2,25 @@
     <span>Camera MANAGER</span>
 
     <span style="margin-left: 20px;">
+      <button mat-stroked-button 
+      
+      routerLink="/home/users"
+      >
+          user list
+      </button>
+  </span>
+
+
+  <span style="margin-left: 20px;">
+    <button mat-stroked-button 
+        routerLink="/home/add-user"
+    >
+        add new user
+    </button>
+</span>
+
+
+    <span style="margin-left: 20px;">
         <button mat-stroked-button 
             routerLink="/home/add-camera"
         >
@@ -13,7 +32,7 @@
         
         routerLink="/home/cameras"
         >
-            list
+            cameras list
         </button>
     </span>
 
@@ -25,12 +44,12 @@
       </button>
       <mat-menu #menu="matMenu">
         
-        <button mat-menu-item>
+        <button mat-menu-item routerLink="/home/profile">
             <mat-icon>person</mat-icon>
             <span>profile</span>
           </button>
       
-        <button mat-menu-item>
+        <button mat-menu-item (click)="logout()">
           <mat-icon>logout</mat-icon>
           <span>logout</span>
         </button>

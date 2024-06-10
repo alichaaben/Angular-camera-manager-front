@@ -11,14 +11,15 @@ export class UpdatecameraComponent {
   name = new FormControl('', [Validators.required]);
   room = new FormControl('', [Validators.required]);
   link = new FormControl('' , [Validators.required])
-
+  status = new FormControl('', [Validators.required])
 
 
   onSubmit(){
    var camera = {
       "name" : this.name,
       "room" : this.room,
-      "link" : this.link
+      "link" : this.link,
+      "status" : this.status,
     }
     console.log(camera)
   }
