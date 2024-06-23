@@ -50,14 +50,22 @@
                       <mat-error>password is <strong>required</strong></mat-error>
                     }
                   </mat-form-field>
-                  
+                  <mat-form-field>
+                    <mat-label>Role</mat-label>
+                    <mat-select [(ngModel)]="role" name="role">
+                      <mat-option value="administrateur">administrateur </mat-option>
+                      <mat-option value="utilisateur standard">utilisateur standard</mat-option>
+                    </mat-select>
+                  </mat-form-field>
                   
                   <mat-card-actions align="end">
                     <button mat-raised-button
                     (click)="onSubmit()"
                     >Save</button>
                     <span class="spacer"></span>
-                  <button mat-raised-button color="warn">cancel</button>
+                  <button 
+                  routerLink="/home/users"
+                  mat-raised-button color="warn">cancel</button>
                     </mat-card-actions>
               </form>
     

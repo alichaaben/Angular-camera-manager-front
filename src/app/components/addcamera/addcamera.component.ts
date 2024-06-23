@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { CameraService } from '../../services/camera.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-addcamera',
@@ -7,19 +9,29 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrl: './addcamera.component.css'
 })
 export class AddcameraComponent {
-    name = new FormControl('', [Validators.required]);
-    room = new FormControl('', [Validators.required]);
-    link = new FormControl('' , [Validators.required])
+
+    nom = new FormControl('', [Validators.required]);
+    localisation = new FormControl('', [Validators.required]);
+     ip = new FormControl('' , [Validators.required])
 
 
+    constructor(
+      private router : Router,
+      private cameraService : CameraService){}
+ 
 
     onSubmit(){
      var camera = {
-        "name" : this.name,
-        "room" : this.room,
-        "link" : this.link
+        "nom" : this.nom.value,
+        "localisation" : this.localisation.value,
+         "adresseIP" : this.ip.value,
+        "statut" : 'connectée'
       }
       console.log(camera)
+      this.cameraService.create(camera).subscribe({
+        next : (res)=> this.router.navigate(['/home/cameras/']),
+        error : (err)=>console.log(err)
+      })
     }
 
 }

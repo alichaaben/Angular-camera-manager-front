@@ -7,10 +7,12 @@
         </mat-card-header>
         <mat-card-content>
 
-            <iframe width="560" height="315" [src]="safeURL" frameborder="0"
+            <iframe width="600" height="600" [src]="videoURL | safe" frameborder="0"
             target="_parent" 
+            
               ></iframe>
-
+            
+              
         </mat-card-content>
     </mat-card>
 </div>

@@ -1,30 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-userlist',
   templateUrl: './userlist.component.html',
   styleUrl: './userlist.component.css'
 })
-export class UserlistComponent {
+export class UserlistComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['id', 'nom', 'prenom', 'email' , 'actions'];
+  displayedColumns: string[] = ['id', 'nom_utilisateur', 'prenom', 'email' , 'actions'];
   dataSource = [
-    {id: 1, nom: 'Hydrogen', prenom:"prenom", email : 'active', },
-    {id: 2, nom: 'Helium', prenom:"prenom", email : 'active', },
-    {id: 3, nom: 'Lithium', prenom:"prenom", email : 'active', },
-    {id: 4, nom: 'Beryllium', prenom:"prenom", email : 'active', },
-    {id: 5, nom: 'Boron', prenom:"prenom", email : 'active', },
-    {id: 6, nom: 'Carbon', prenom:"prenom", email : 'active', },
-    {id: 7, nom: 'Nitrogen', prenom:"prenom", email : 'active', },
-    {id: 8, nom: 'Oxygen', prenom:"prenom", email : 'active', },
-    {id: 9, nom: 'Fluorine', prenom:"prenom", email : 'active', },
-    {id: 10, nom: 'Neon', prenom:"prenom", email : 'active', },
+    
   ];
 
+  constructor(private userService : AuthService){}
 
+  ngOnInit(): void {
+    this.getAllUsers();
+  }
+
+  getAllUsers(){
+    this.userService.getAllUsers().subscribe({
+      next : (res : any  )=> {
+        this.dataSource = res ;
+        console.log(this.dataSource)
+      }
+    })
+  }
   
-  delete (id : any ){
-    confirm("are you sure you want to delete item with id "+id)
+  delete (id : any ){if(
+    confirm("are you sure you want to delete item with id "+id)){
+      this.userService.delete(id ).subscribe({
+        next : (res )=> this.getAllUsers()
+      })
+    }
   }
 }

@@ -10,21 +10,42 @@ import { UserlistComponent } from './components/userlist/userlist.component';
 import { UseraddComponent } from './components/useradd/useradd.component';
 import { UserupdateComponent } from './components/userupdate/userupdate.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AuthGuard } from './guards/auth.guard' 
+
 
 const routes: Routes = [
 
-  {path : 'login' , component : LoginComponent},
-   {path: 'home' , component : HomeComponent , children : [
-    {path : 'cameras' , component : CameralistComponent},
-    {path : 'add-camera' , component : AddcameraComponent},
-    {path : 'update/:id' , component : UpdatecameraComponent},
-    {path : 'live/:id' , component : CameraliveComponent},
-    {path : 'users' , component : UserlistComponent},
-    {path : 'add-user', component : UseraddComponent},
-    {path : 'users/:id' , component : UserupdateComponent},
-    {path : 'profile' , component : ProfileComponent}
+  {path : 'login' , component : LoginComponent}, 
+   {path: 'home' , component : HomeComponent , canActivate : [
+    AuthGuard
+   ] , 
+    children : [
+    {path : 'cameras' , component : CameralistComponent  , canActivate : [
+    AuthGuard
+   ] , },
+    {path : 'add-camera' , component : AddcameraComponent , canActivate : [
+    AuthGuard
+   ] , },
+    {path : 'update/:id' , component : UpdatecameraComponent , canActivate : [
+    AuthGuard
+   ] , },
+    {path : 'live/:id' , component : CameraliveComponent , canActivate : [
+    AuthGuard
+   ] , },
+    {path : 'users' , component : UserlistComponent , canActivate : [
+    AuthGuard
+   ] , },
+    {path : 'add-user', component : UseraddComponent , canActivate : [
+    AuthGuard
+   ] , },
+    {path : 'users/:id' , component : UserupdateComponent , canActivate : [
+    AuthGuard
+   ] , },
+    {path : 'profile' , component : ProfileComponent , canActivate : [
+      AuthGuard
+     ] , }
   ]},
-];
+ ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

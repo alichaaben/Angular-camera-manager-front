@@ -1,4 +1,127 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html, body { 
+    background: linear-gradient(to top, #537895   0%,  #09203f 100%);
+    height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.side{
+    width: 300px ;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: var(--color-neutral);
+    z-index: 100;
+    transition: width 300ms;
+    border-right: 1px solid rgba(0,0,0,0.2);
+}
+
+.main-content{
+    transition: margin-left 300ms;
+    margin-left: 300px;
+}
+
+header {
+    display: flex ;
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    position: fixed;
+    left: 300px;
+    width: calc(100% - 300px);
+    top: 0;
+    background-color: var(--color-neutral);
+    height: 70px;
+    transition : 300ms;
+}
+
+.sidebar-brand{
+    display: flex;
+    align-items: center;
+    overflow: hidden;  
+    height: 75px ;
+    padding-left: 18px;
+    color: var(--text-dark);
+}
+
+.sidebar-brand .sidebar-brand-logo {
+    padding-right: 20px ;
+}
+
+.sidebar-brand .sidebar-brand-logo span img{
+    width: 70px ;
+    margin-left: -10px
+} 
+
+.sidebar-brand .sidebar-brand-name{
+    font-size: 28px ;
+    transition: 200ms ease-out;
+    color: #005a81 ;
+} 
+
+.sidebar-brand .sidebar-brand-name h5 {
+    margin-top: 5px;
+    margin-bottom: -15px;
+    letter-spacing: 2px;
+}
+
+.sidebar-brand .sidebar-brand-name small {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold ;
+    letter-spacing: 2px;
+}
+.sidebar-title{
+    color: var(--text-dark);
+    width: 100%;
+    margin-top:15px;
+    margin-left: 20px;
+    letter-spacing: 2px;
+}
+
+
+
+.sidebar-menu ul{
+    margin-top: 20px ;
+}
+.sidebar-menu li{
+    width: 100%;
+    margin-bottom: 30px ;
+    transition: 300ms ease-out;
+}
+
+
+.sidebar-menu li a {
+    display: flex;
+    align-items: center;
+    color: var(--text-dark);
+    font-size: 18px;
+    text-decoration: none;
+    padding-left: 15px;
+    width: 250px;
+    height: 30px;
+    border-radius: 15px;
+    transition: 300ms ease-out;
+}
+
+.sidebar-menu li a small {
+    margin-left: 5px ;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    overflow: hidden;
+    font-size: 12px ;
+    font-weight: bold;
+    border-radius: 50% ;
+    color: #fff ;
+    transition: all 50ms ease-out;
+}
+
+
+.sidebar-menu a span:first-child{   
+    font-size: 18px ;
+    padding-right: 15px;
+    width: 35px;
+}

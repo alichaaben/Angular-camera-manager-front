@@ -9,8 +9,8 @@
             
             <form class="example-form">
                 <mat-form-field class="example-full-width">
-                  <mat-label>email</mat-label>
-                  <input type="email" matInput [formControl]="email" placeholder="Ex. pat@example.com">
+                  <mat-label>username</mat-label>
+                  <input type="text" matInput [formControl]="email" placeholder="Ex. foulen">
                   @if (email.hasError('email') && !email.hasError('required')) {
                     <mat-error>Please enter a valid email address</mat-error>
                   }

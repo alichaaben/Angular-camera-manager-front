@@ -13,6 +13,7 @@ export class NavComponent {
   constructor(private router : Router){}
 
   logout(){
+    localStorage.clear()
     this.router.navigate(['/login'])
   }
 }

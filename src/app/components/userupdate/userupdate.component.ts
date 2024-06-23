@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-userupdate',
@@ -8,20 +10,32 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class UserupdateComponent {
 
-  nom = new FormControl('', [Validators.required]);
-  prenom = new FormControl('', [Validators.required]);
-  email = new FormControl('' , [Validators.required , Validators.email])
-  username = new FormControl('' , [Validators.required , Validators.email])
-  password  = new FormControl('' , [Validators.required])
+
+  user : any  = {}
 
 
+  constructor(
+    private activeRoute : ActivatedRoute,
+    private router : Router,
+    private userService : AuthService){}
+
+
+  ngOnInit(){
+   this.getById()
+  }
+  getById(){
+    this.userService.getById(this.activeRoute.snapshot.params['id']).subscribe({
+      next : (res)=>{this.user = res
+
+        console.log(this.user);
+        
+       }
+    })
+  }
   onSubmit(){
-   var user = {
-      "nom" : this.nom.value,
-      "prenom" : this.prenom.value,
-      "email" : this.email.value,
-      "nom_utilisateur" : this.username.value
-    }
-    console.log(user)
+    this.userService.update(this.user).subscribe({
+      next : (res)=> this.router.navigate(['/home/users'])
+    })
+
   }
 }

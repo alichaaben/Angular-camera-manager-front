@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CameraService } from '../../services/camera.service';
 
 @Component({
   selector: 'app-updatecamera',
@@ -8,20 +10,39 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class UpdatecameraComponent {
 
-  name = new FormControl('', [Validators.required]);
-  room = new FormControl('', [Validators.required]);
-  link = new FormControl('' , [Validators.required])
-  status = new FormControl('', [Validators.required])
+  camera : any= {} ;
+   statut = false 
 
+
+
+  constructor(
+    private activeRoute : ActivatedRoute ,
+    private router : Router,
+    private cameraService : CameraService){}
+
+    ngOnInit(){
+      this.getById()
+    }
+
+    getById(){
+      this.cameraService.getById( this.activeRoute.snapshot.params["id"]).subscribe({
+        next : (res )=>{
+          
+          this.camera = res
+          this.statut = this.camera.statut   == 'connectée'
+          console.log(this.camera);
+          
+          }
+      })
+    }
 
   onSubmit(){
-   var camera = {
-      "name" : this.name,
-      "room" : this.room,
-      "link" : this.link,
-      "status" : this.status,
-    }
-    console.log(camera)
+   
+    console.log(this.camera)
+    this.cameraService.modifier(this.camera).subscribe({
+      next : (res)=> this.router.navigate(['/home/cameras/']),
+      error : (err)=>console.log(err)
+    })
   }
 
 }

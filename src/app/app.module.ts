@@ -25,7 +25,14 @@ import { UserlistComponent } from './components/userlist/userlist.component';
 import { UseraddComponent } from './components/useradd/useradd.component';
 import { UserupdateComponent } from './components/userupdate/userupdate.component';
 import { ProfileComponent } from './components/profile/profile.component'
-
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatSelectModule } from '@angular/material/select';
+import { SafePipe } from './pipes/safe.pipe';
+import { SideComponent } from './components/side/side.component';
+import { JwtInterceptor } from './interceptors/http.interceptor';
+import { AuthGuard } from './guards/auth.guard';
+   
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +46,9 @@ import { ProfileComponent } from './components/profile/profile.component'
     UserlistComponent,
     UseraddComponent,
     UserupdateComponent,
-    ProfileComponent
+    ProfileComponent,
+    SafePipe,
+    SideComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +56,8 @@ import { ProfileComponent } from './components/profile/profile.component'
     ReactiveFormsModule,
     MatFormFieldModule,
     FormsModule,
-
+    HttpClientModule,
+ 
     MatTableModule,
     MatToolbarModule,
     MatCardModule,
@@ -56,10 +66,18 @@ import { ProfileComponent } from './components/profile/profile.component'
     MatButtonModule,
     MatInputModule,
     MatDialogModule,
-    
+    MatSlideToggleModule,
+    MatSelectModule,
   ],
   providers: [
-    provideAnimationsAsync()
+    AuthGuard,
+     provideAnimationsAsync(),
+    {
+        provide: HTTP_INTERCEPTORS,
+        useClass: JwtInterceptor,
+        multi: true
+      
+    }
   ],
   bootstrap: [AppComponent]
 })
